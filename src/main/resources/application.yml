@@ -1,0 +1,19 @@
+# application
+server:
+  port: 5050
+  servlet:
+    context-path: /sellmycar/api
+
+spring:
+  application:
+    name: SellMyCar
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sellmycar
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update

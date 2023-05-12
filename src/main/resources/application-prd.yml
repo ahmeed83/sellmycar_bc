@@ -1,0 +1,15 @@
+# application
+server:
+  port: 9090
+  servlet:
+    context-path: /sellmycar/api
+
+# Database connection properties
+spring:
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
