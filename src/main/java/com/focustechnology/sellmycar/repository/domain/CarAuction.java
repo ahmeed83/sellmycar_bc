@@ -28,20 +28,26 @@ public class CarAuction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
-    private String make;
-
+    private String sellerName;
     @Column(nullable = false)
-    private String model;
-
+    private String sellerAddress;
     @Column(nullable = false)
-    private int year;
-
+    private String carMake;
     @Column(nullable = false)
-    private double price;
-
-    private String description;
+    private String carModel;
+    @Column(nullable = false)
+    private Integer carYear;
+    @Column(nullable = false)
+    private Double carPrice;
+    @Column(nullable = false)
+    private String generalDescription;
+    @Column(nullable = false)
+    private Integer carMileage;
+    @Column(nullable = false)
+    private String carConditionBody;
+    @Column(nullable = false)
+    private String carConditionInterior;
 
     @Override
     public boolean equals(Object o) {
