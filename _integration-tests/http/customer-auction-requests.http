@@ -1,0 +1,14 @@
+###
+GET {{HOST}}/sellmycar/api/car-auction
+
+###
+POST {{HOST}}/sellmycar/api/car-auction/create
+Content-Type: application/json
+
+{
+  "make": "BMW",
+  "model": "X5",
+  "year": 2023,
+  "price": 83000,
+  "description": "This is a wonderful reliable and fuel-efficient sedan."
+}
