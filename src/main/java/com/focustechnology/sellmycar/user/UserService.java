@@ -82,7 +82,10 @@ public class UserService {
                 request.getPassword()
             )
         );
-        return null;
+        var user = jwtService.getActiveLogin(request.getEmail());
+        return AuthenticationResponse.builder()
+            .token(jwtService.generateToken(user))
+            .build();
     }
 
     private Login createLogin(final SignupRequest request) {
