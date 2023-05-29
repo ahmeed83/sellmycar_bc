@@ -1,4 +1,4 @@
-package com.focustechnology.sellmycar.user.data.entity;
+package com.focustechnology.sellmycar.user.repository.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,11 +22,11 @@ public class Login {
     private UUID id;
 
     @Column(nullable = false)
-    private String loginName;
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    Boolean active;
+    private boolean active;
 }

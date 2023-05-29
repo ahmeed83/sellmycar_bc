@@ -1,9 +1,9 @@
-package com.focustechnology.sellmycar.service.dto;
+package com.focustechnology.sellmycar.car.service.dto;
 
 import lombok.Data;
 
 @Data
-public class CarAuctionDto {
+public class CarDto {
     private String sellerName;
     private String sellerAddress;
     private String carMake;

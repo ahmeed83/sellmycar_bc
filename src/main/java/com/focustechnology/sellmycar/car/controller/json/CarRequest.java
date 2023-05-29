@@ -1,4 +1,4 @@
-package com.focustechnology.sellmycar.controller.json;
+package com.focustechnology.sellmycar.car.controller.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-public class CarAuctionRequest {
+public class CarRequest {
     @JsonProperty("seller-name")
     @NotNull
     private String sellerName;
