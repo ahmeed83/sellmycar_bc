@@ -55,16 +55,19 @@ public class JwtService {
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         final Login activeLogin = user.getLogins().stream()
-            .filter(login -> login.isActive())
+            .filter(Login::isActive)
             .findFirst().orElseThrow(() -> new AccountExpiredException(String.format("No active login found for user %s", username)));
 
-        var role = switch (user) {
-            case Dealer dealer -> Role.DEALER;
-            case Customer customer -> Role.CUSTOMER;
-            case Admin admin -> Role.ADMIN;
-            default -> throw new IllegalStateException("Unknown role for user: " + user);
-        };
-
+        Role role;
+        if (user instanceof Dealer) {
+            role = Role.DEALER;
+        } else if (user instanceof Customer) {
+            role = Role.CUSTOMER;
+        } else if (user instanceof Admin) {
+            role = Role.ADMIN;
+        } else {
+            throw new IllegalStateException("Unknown role for user: " + user);
+        }
         return JwtUserDetails.builder()
             .email(activeLogin.getEmail())
             .password(activeLogin.getPassword())
