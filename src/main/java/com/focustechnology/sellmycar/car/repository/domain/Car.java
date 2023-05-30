@@ -1,10 +1,12 @@
-package com.focustechnology.sellmycar.repository.domain;
+package com.focustechnology.sellmycar.car.repository.domain;
 
+import com.focustechnology.sellmycar.user.repository.domain.Customer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -23,7 +25,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarAuction {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,11 +51,14 @@ public class CarAuction {
     @Column(nullable = false)
     private String carConditionInterior;
 
+    @ManyToOne
+    private Customer customer;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        CarAuction that = (CarAuction) o;
+        Car that = (Car) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
