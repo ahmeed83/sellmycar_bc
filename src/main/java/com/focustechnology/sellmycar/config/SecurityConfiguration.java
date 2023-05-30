@@ -24,8 +24,8 @@ public class SecurityConfiguration {
             .disable()
             .authorizeHttpRequests()
             .requestMatchers(
-                "/sellmycar/api/user/auth/**",
-                "/sellmycar/api/car-auction/create"
+                "/user/auth/**",
+                "/car-auction/create"
             )
             .permitAll()
             .anyRequest()
