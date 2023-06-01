@@ -1,9 +1,9 @@
 package com.focustechnology.sellmycar.car.repository;
 
 import com.focustechnology.sellmycar.car.repository.domain.Car;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface CarRepository extends CrudRepository<Car, Long> {
+import java.util.UUID;
+
+public interface CarRepository extends JpaRepository<Car, UUID> {
 }

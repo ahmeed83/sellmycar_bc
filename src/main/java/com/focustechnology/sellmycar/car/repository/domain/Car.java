@@ -1,69 +1,40 @@
 package com.focustechnology.sellmycar.car.repository.domain;
 
 import com.focustechnology.sellmycar.user.repository.domain.Customer;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.Hibernate;
+import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Objects;
+import java.util.UUID;
 
 @Entity
-@Table(name = "car_auction", uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
-@Getter
-@Setter
+@Table(name = "car", uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder(builderMethodName = "toBuilder")
+@Getter
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
     @Column(nullable = false)
-    private String sellerName;
+    private String make;
     @Column(nullable = false)
-    private String sellerAddress;
+    private String model;
     @Column(nullable = false)
-    private String carMake;
+    private Integer year;
     @Column(nullable = false)
-    private String carModel;
+    private Integer mileage;
     @Column(nullable = false)
-    private Integer carYear;
+    private String description;
     @Column(nullable = false)
-    private Double carPrice;
+    private String conditionBody;
     @Column(nullable = false)
-    private String generalDescription;
+    private String conditionInterior;
     @Column(nullable = false)
-    private Integer carMileage;
-    @Column(nullable = false)
-    private String carConditionBody;
-    @Column(nullable = false)
-    private String carConditionInterior;
-
+    private boolean verified;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Customer customer;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Car that = (Car) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
