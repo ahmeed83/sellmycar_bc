@@ -15,7 +15,7 @@ public interface CarMapper {
 
     @Mapping(target = "verified", ignore = true)
     default Car dtoToEntity(CarDto dto) {
-        return Car.toBuilder()
+        return Car.builder()
                 .make(dto.getCarMake())
                 .model(dto.getCarModel())
                 .year(dto.getCarYear())

@@ -11,7 +11,7 @@ import java.util.UUID;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderMethodName = "toBuilder")
+@Builder
 @Getter
 public class Car {
 
