@@ -21,15 +21,12 @@ public class CarRequest {
     @NotNull
     private String carModel;
     @JsonProperty("car-year")
-    @NotNull
     private int carYear;
     @JsonProperty("car-price")
-    @NotNull
     private double carPrice;
     @JsonProperty("general-description")
     private String generalDescription;
     @JsonProperty("car-mileage")
-    @NotNull
     private int carMileage;
     @JsonProperty("car-condition-body")
     @NotNull
