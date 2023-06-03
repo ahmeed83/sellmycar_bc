@@ -36,7 +36,7 @@ public class JwtService {
     }
 
     public <T> T extractClaim(final String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
+        final Claims claims = verifyAndParseJwtToken(token);
         return claimsResolver.apply(claims);
 
     }
@@ -97,12 +97,12 @@ public class JwtService {
                 .compact();
     }
 
-    private Claims extractAllClaims(final String token) {
+    private Claims verifyAndParseJwtToken(final String token) {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSingingKey())
                 .build()
-                .parseClaimsJws(token)
+                .parseClaimsJws(token) // this line also verify the token does not match the signature
                 .getBody();
     }
 
