@@ -52,7 +52,7 @@ public class JwtService {
 
     public UserDetails getActiveLogin(final String username) {
         final Person user = personRepository.findByLoginsEmailAndLoginsActiveTrue(username)
-            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            .orElseThrow(() -> new UsernameNotFoundException(String.format("User %s not found", username)));
 
         final Login activeLogin = user.getLogins().stream()
             .filter(Login::isActive)
@@ -102,7 +102,7 @@ public class JwtService {
                 .parserBuilder()
                 .setSigningKey(getSingingKey())
                 .build()
-                .parseClaimsJws(token) // this line also verify the token does not match the signature
+                .parseClaimsJws(token) // this line also verify the JWT token if it is valid and match the signature
                 .getBody();
     }
 
