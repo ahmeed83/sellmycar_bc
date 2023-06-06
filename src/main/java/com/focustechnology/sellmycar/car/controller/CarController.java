@@ -21,7 +21,7 @@ public class CarController {
     }
 
     @PostMapping("/create")
-    public void createCarAuction(@RequestBody CarRequest carAuctionRequest) {
-        carService.submitCar(carMapper.requestToDto(carAuctionRequest));
+    public void createCarAuction(@RequestBody CarRequest carRequest) {
+        carService.submitCar(carMapper.requestToDto(carRequest));
     }
 }

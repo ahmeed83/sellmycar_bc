@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "db591fa9-6595-42e5-85c9-83559b39986c",
+		"name": "SellMyCar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19108871"
+	},
+	"item": [
+		{
+			"name": "get active auctions DEALER!",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvc2FtYS5hbHRlbWVteUBnbWFpbC5jb20iLCJpYXQiOjE2ODU4MzQxNDcsImV4cCI6MTY4NTgzNTU4N30.vC62C6PdVGz3XrymKAMCSfeope1q_FDglqEl-ulBJuM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5050/sellmycar/api/auction/active-auctions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"sellmycar",
+						"api",
+						"auction",
+						"active-auctions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign in",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "dealer sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Ahmed\",\n    \"lastname\": \"Aziz\",\n    \"email\": \"aaziz083@gmail.com\",\n    \"password\": \"4444\",\n    \"adres\": \"Leiden\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/sellmycar/api/user/auth/signup/dealer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"sellmycar",
+						"api",
+						"user",
+						"auth",
+						"signup",
+						"dealer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Hassanein\",\n    \"lastname\": \"Altememy\",\n    \"email\": \"hassanein.altememy@gmail.com\",\n    \"password\": \"12345\",\n    \"adres\": \"Menno ter braakstraat 60, den haag\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/sellmycar/api/user/auth/signup/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"sellmycar",
+						"api",
+						"user",
+						"auth",
+						"signup",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

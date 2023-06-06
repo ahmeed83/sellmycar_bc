@@ -36,7 +36,7 @@ public class JwtService {
     }
 
     public <T> T extractClaim(final String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
+        final Claims claims = verifyAndParseJwtToken(token);
         return claimsResolver.apply(claims);
 
     }
@@ -52,7 +52,7 @@ public class JwtService {
 
     public UserDetails getActiveLogin(final String username) {
         final Person user = personRepository.findByLoginsEmailAndLoginsActiveTrue(username)
-            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            .orElseThrow(() -> new UsernameNotFoundException(String.format("User %s not found", username)));
 
         final Login activeLogin = user.getLogins().stream()
             .filter(Login::isActive)
@@ -97,12 +97,12 @@ public class JwtService {
                 .compact();
     }
 
-    private Claims extractAllClaims(final String token) {
+    private Claims verifyAndParseJwtToken(final String token) {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSingingKey())
                 .build()
-                .parseClaimsJws(token)
+                .parseClaimsJws(token) // this line also verify the JWT token if it is valid and match the signature
                 .getBody();
     }
 

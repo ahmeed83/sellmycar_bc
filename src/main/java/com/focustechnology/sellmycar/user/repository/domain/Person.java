@@ -2,6 +2,7 @@ package com.focustechnology.sellmycar.user.repository.domain;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
@@ -27,6 +28,6 @@ public class Person {
     private String firstName;
     private String lastName;
     private String address;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //eager is needed for the JWT filter
     private List<Login> logins = new ArrayList<>();
 }
