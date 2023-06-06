@@ -8,29 +8,33 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class CarRequest {
+    @NotNull
     @JsonProperty("seller-name")
-    @NotNull
     private String sellerName;
+    @NotNull
     @JsonProperty("seller-address")
-    @NotNull
     private String sellerAddress;
+    @NotNull
     @JsonProperty("car-make")
-    @NotNull
     private String carMake;
+    @NotNull
     @JsonProperty("car-model")
-    @NotNull
     private String carModel;
-    @JsonProperty("car-year")
-    private int carYear;
-    @JsonProperty("car-price")
-    private double carPrice;
-    @JsonProperty("general-description")
-    private String generalDescription;
-    @JsonProperty("car-mileage")
-    private int carMileage;
-    @JsonProperty("car-condition-body")
     @NotNull
+    @JsonProperty("car-year")
+    private String  carYear;
+    @NotNull
+    @JsonProperty("car-price")
+    private String carPrice;
+    @NotNull
+    @JsonProperty("car-mileage")
+    private String carMileage;
+    @NotNull
+    @JsonProperty("car-condition-body")
     private String carConditionBody;
+    @NotNull
     @JsonProperty("car-condition-interior")
     private String carConditionInterior;
+    @JsonProperty("general-description")
+    private String generalDescription;
 }

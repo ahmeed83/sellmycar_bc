@@ -23,9 +23,9 @@ public class Car {
     @Column(nullable = false)
     private String model;
     @Column(nullable = false)
-    private Integer year;
+    private String year;
     @Column(nullable = false)
-    private Integer mileage;
+    private String mileage;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
