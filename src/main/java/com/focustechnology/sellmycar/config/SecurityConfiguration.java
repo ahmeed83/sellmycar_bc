@@ -27,7 +27,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests()
             .requestMatchers(
                 "/user/auth/**",
-                "/car-auction/create"
+                "/car/create"
             )
             .permitAll()
             .anyRequest()
