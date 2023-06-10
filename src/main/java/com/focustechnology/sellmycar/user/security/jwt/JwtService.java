@@ -14,13 +14,13 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -42,7 +42,12 @@ public class JwtService {
     }
 
     public String generateToken(final UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        return generateToken(Map.of("role",
+            userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority).findFirst()
+                .orElseThrow(() -> new IllegalStateException(String.format("No role assigned to this user %s",
+                        userDetails.getUsername())))),
+            userDetails);
     }
 
     public boolean isTokenValid(final String token, final UserDetails userDetails) {

@@ -35,6 +35,7 @@ public class UserService {
             .firstName(request.getFirstname())
             .lastName(request.getLastname())
             .address(request.getAddress())
+            .telNr(request.getTelNr())
             .logins(List.of(newLogin))
             .build();
 
