@@ -28,6 +28,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private String address;
+    private String telNr;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //eager is needed for the JWT filter
     private List<Login> logins = new ArrayList<>();
 }
